@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import butterknife.BindView
+import com.example.oleg.createlayoutdinamically.http.interfaces.Requests
 import com.example.oleg.createlayoutdinamically.interfaces.ICallBack
 
 class KotlinActivity : AppCompatActivity(),ICallBack {
@@ -41,7 +42,7 @@ class KotlinActivity : AppCompatActivity(),ICallBack {
             kotlinText?.text = i.toString()
 
         }
-
+        Requests().getVideoTitle()
     }
 
 }
