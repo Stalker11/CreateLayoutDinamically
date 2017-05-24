@@ -1,21 +1,25 @@
 package com.example.oleg.createlayoutdinamically
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.oleg.createlayoutdinamically.interfaces.ICallBack
+import com.example.oleg.createlayoutdinamically.models.DescriptionFilm
 
 
-class Adapters(var counts:Int, val callBack:ICallBack) : RecyclerView.Adapter<Adapters.ViewHolder>() {
-    private var count: Int? = counts
-    private var callBacks:ICallBack = callBack
+class Adapters(var films: DescriptionFilm, val callBack: ICallBack?) : RecyclerView.Adapter<Adapters.ViewHolder>() {
+
+    private var film: DescriptionFilm = films as DescriptionFilm
+    private var callBacks:ICallBack = callBack as ICallBack
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-          holder?.itemView?.setOnClickListener {
-              callBack.onSucsess("Down")
+          holder?.filmName!!.setText(film.title)
+          holder.filmDirector.setText(films?.director)
+          holder.itemView?.setOnClickListener {
+              callBack?.onSucsess("Down")
+
           }
     }
 
@@ -25,9 +29,12 @@ class Adapters(var counts:Int, val callBack:ICallBack) : RecyclerView.Adapter<Ad
     }
 
     override fun getItemCount(): Int {
-       return 10;
+       return 1
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+         val image: ImageView = view.findViewById(R.id.poster) as ImageView
+         val filmName:TextView = view.findViewById(R.id.film_name) as TextView
+         val filmDirector:TextView = view.findViewById(R.id.film_director) as TextView
     }
 }

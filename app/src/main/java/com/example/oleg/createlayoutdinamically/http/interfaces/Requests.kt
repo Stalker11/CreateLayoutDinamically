@@ -1,6 +1,7 @@
 package com.example.oleg.createlayoutdinamically.http.interfaces
 
 import android.util.Log
+import com.example.oleg.createlayoutdinamically.Adapters
 import com.example.oleg.createlayoutdinamically.models.DescriptionFilm
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,6 +31,7 @@ class Requests {
 
             override fun onResponse(call: Call<DescriptionFilm>?, response: Response<DescriptionFilm>?) {
                 Log.d(TAG, "request" + response?.body()?.raiting+" "+call?.request()!!.url())
+                Adapters(response!!.body(),null)
             }
 
         })

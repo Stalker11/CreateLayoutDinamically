@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import butterknife.BindView
 import com.example.oleg.createlayoutdinamically.http.interfaces.Requests
 import com.example.oleg.createlayoutdinamically.interfaces.ICallBack
 
@@ -33,7 +31,7 @@ class KotlinActivity : AppCompatActivity(),ICallBack {
         kotlinText = findViewById(R.id.kotlin_text) as TextView
         kotlinButton = findViewById(R.id.kotlin_button) as Button
         kotlinRecycler = findViewById(R.id.recycler) as RecyclerView
-        kotlinRecycler!!.adapter = Adapters(10,this)
+       // kotlinRecycler?.adapter = Adapters(null,this)
         kotlinRecycler!!.layoutManager = LinearLayoutManager(this)
         Log.d(TAG,"KotlinActivity"+ kotlinButton)
         kotlinButton?.setOnClickListener{
